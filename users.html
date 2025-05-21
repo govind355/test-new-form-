@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gray-100 text-gray-900">
 <head>
   <meta charset="UTF-8" />
-  <title>Leads - CRM</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management - CRM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="js/main.js"></script>
 </head>
-<body>
-  <div id="sidebar"></div>
-  <main>
-    <h1>Leads</h1>
-    <p>List of leads will be displayed here.</p>
-  </main>
+<body class="flex min-h-screen">
+  <aside id="sidebar" class="w-64 bg-white shadow-md p-5 hidden md:block"></aside>
 
-  <script src="js/main.js"></script>
+  <main class="flex-1 p-6">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold mb-2">User Management</h1>
+      <p class="text-gray-600">Manage CRM users here. (Google Sheets integration coming)</p>
+    </header>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+      <p class="text-gray-500">This is a placeholder. User list and form integration coming soon.</p>
+    </div>
+  </main>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
