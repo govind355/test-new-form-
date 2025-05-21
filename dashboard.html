@@ -1,17 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gray-100 text-gray-900">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard - CRM</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="js/main.js"></script>
 </head>
-<body>
-  <div id="sidebar"></div>
-  <main>
-    <h1>Welcome to your Dashboard</h1>
-    <p>Here you'll see CRM stats and activity.</p>
-  </main>
+<body class="flex min-h-screen">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="w-64 bg-white shadow-md p-5 hidden md:block">
+    <!-- Sidebar loaded from main.js -->
+  </aside>
 
-  <script src="js/main.js"></script>
+  <!-- Main -->
+  <main class="flex-1 p-6">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold mb-2">Dashboard</h1>
+      <p class="text-gray-600">Welcome back! Here’s a quick overview of your CRM.</p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="flex items-center space-x-4">
+          <i data-lucide="users" class="w-6 h-6 text-blue-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Total Leads</p>
+            <p class="text-xl font-semibold">Coming Soon</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="flex items-center space-x-4">
+          <i data-lucide="check-circle" class="w-6 h-6 text-green-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Converted</p>
+            <p class="text-xl font-semibold">Coming Soon</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <div class="flex items-center space-x-4">
+          <i data-lucide="clock" class="w-6 h-6 text-yellow-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Pending</p>
+            <p class="text-xl font-semibold">Coming Soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
