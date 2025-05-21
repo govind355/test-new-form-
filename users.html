@@ -7,22 +7,60 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script defer src="js/main.js"></script>
+  <script defer src="js/users.js"></script>
 </head>
 <body class="flex min-h-screen">
   <aside id="sidebar" class="w-64 bg-white shadow-md p-5 hidden md:block"></aside>
 
-  <main class="flex-1 p-6">
-    <header class="mb-6">
-      <h1 class="text-3xl font-bold mb-2">User Management</h1>
-      <p class="text-gray-600">Manage CRM users here. (Google Sheets integration coming)</p>
+  <main class="flex-1 p-6 space-y-8">
+    <header>
+      <h1 class="text-3xl font-bold mb-1">User Management</h1>
+      <p class="text-gray-600">Add or manage CRM users.</p>
     </header>
 
-    <div class="bg-white p-6 rounded-xl shadow">
-      <p class="text-gray-500">This is a placeholder. User list and form integration coming soon.</p>
-    </div>
+    <!-- Form -->
+    <section class="bg-white p-6 rounded-xl shadow space-y-4">
+      <h2 class="text-xl font-semibold mb-2">Add New User</h2>
+      <form id="userForm" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <input type="text" id="name" placeholder="Full Name" required class="input" />
+        <input type="email" id="email" placeholder="Email" required class="input" />
+        <select id="role" required class="input">
+          <option value="">Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="Manager">Manager</option>
+          <option value="Agent">Agent</option>
+        </select>
+        <button type="submit" class="col-span-1 sm:col-span-3 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
+          Add User
+        </button>
+      </form>
+    </section>
+
+    <!-- User Table -->
+    <section class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">Current Users</h2>
+      <table class="min-w-full table-auto text-left text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Role</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody" class="text-gray-700"></tbody>
+      </table>
+    </section>
   </main>
+
   <script>
     lucide.createIcons();
   </script>
+  <style>
+    .input {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+    }
+  </style>
 </body>
 </html>
