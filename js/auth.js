@@ -1,17 +1,26 @@
-function login() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const errorMsg = document.getElementById("errorMsg");
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbyGSkfDfkhtluqeHaN-CpZ68z-RU_OhNzz_XD5UTTjlymX3YTkiYvfBoYmeIterQMIU/exec";
 
-  if (email === "admin@example.com" && password === "admin123") {
-    localStorage.setItem("crm_user", email);
-    window.location.href = "dashboard.html";
-  } else {
-    errorMsg.textContent = "Invalid credentials.";
-  }
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
 
-function logout() {
-  localStorage.removeItem("crm_user");
-  window.location.href = "index.html";
-}
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    try {
+      const res = await fetch(`${SHEET_URL}?sheet=Users&login=true&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+      const result = await res.json();
+
+      if (result.success) {
+        localStorage.setItem("user", JSON.stringify(result.user));
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Login failed: " + result.error);
+      }
+    } catch (err) {
+      alert("Network or server error.");
+      console.error(err);
+    }
+  });
+});
